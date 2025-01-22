@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Energy</title>
+  <!-- Шрифти -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet" />
+  <!-- Стилі -->
+  <link rel="stylesheet" href="./css/footer.css" />
+</head>
+
+<body>
+  <main>
+    <!-- Контейнер для футера -->
+    <div id="footer"></div>
+
+    <!-- Модальне вікно -->
+    <div id="modal-rating" style="display: none;">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Rate this Exercise</h2>
+        <p>Give your rating below:</p>
+        <!-- Додайте рейтинг-секцію тут -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Сценарій для завантаження футера -->
+  <script>
+    // Завантаження футера
+    fetch('./partials/footer.html')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then((html) => {
+        document.getElementById('footer').innerHTML = html;
+      })
+      .catch((error) => console.error('Error loading footer:', error));
+  </script>
+
+  <!-- Підключення скрипту модального вікна -->
+  <script src="./js/modal-rating.js"></script>
+</body>
+
+</html>
